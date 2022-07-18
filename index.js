@@ -38,18 +38,13 @@ const people = require("./people");
 // });
 
 // CORE MODULES --> EVENTS
-const EventEmitter = require("events");
-const emitter = new EventEmitter();
+const School = require("./school");
+const school = new School();
 //register a listener for bellring event
-emitter.on("bellRing", ({ period1, period2, text1, text2 }) => {
+school.on("bellRing", ({ period1, period2, text1, text2 }) => {
   console.log(
     `We need to run becuase ${period1} ${text1}, ${period2} ${text2}`
   );
 });
-// raise an event
-emitter.emit("bellRing", {
-  period1: "first",
-  text1: "period ended",
-  period2: "second",
-  text2: "period started",
-});
+
+school.startPeriod();
